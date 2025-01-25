@@ -9,4 +9,8 @@ public class ControladorUsuarios {
         Usuario usuario = new Usuario(email, password);
         return usuarioDAO.guardarUsuario(usuario);// Devuelve true o false dependiendo de si se pudo registrar o no el usuario
     }
+
+    public boolean validarUsuario(String email, String password) {
+        return usuarioDAO.validarUsuario(email, password);
+    }
 }

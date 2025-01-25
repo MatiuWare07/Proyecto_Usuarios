@@ -28,4 +28,20 @@ public class UsuarioDAO {
             return false;
         }
     }
+
+    public boolean validarUsuario(String email, String password) {
+        try {
+            String query = "SELECT * FROM Usuario WHERE email = ? AND password = ?";
+            PreparedStatement stmt = conexion.prepareStatement(query);
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+
+            return rs.next(); // Si hay resultados, las credenciales son válidas
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
